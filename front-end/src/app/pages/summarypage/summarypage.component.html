@@ -1,0 +1,45 @@
+<app-navpage></app-navpage>
+
+<div class="container" role="main">
+  <br>
+  <div class="jumbotron">
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Method</th>
+          <th scope="col">Query Mode</th>
+          <th scope="col">File Size</th>
+          <th scope="col">Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-active"    *ngFor="let requests of myRequest">
+          <th scope="row">{{requests.method}}</th>
+          <td>{{requests.query_mode}}</td>
+          <td>{{requests.file_size}}</td>
+          <td>{{requests.duration}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4 class="alert-heading">Recommendation</h4>
+      <p class="mb-0">Depending on the need of your system; while the database storage
+        method may be better in term of security since all files are stored in database ,
+        it is also important to put users expirence(in terms of application speed) into account.
+        For me, i prefer to certify my users while I border about how to secure my files. </p>
+    </div>
+
+    <div class="alert alert-dismissible alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4 class="alert-heading">Warning!</h4>
+      <p class="mb-0">This study has shown that the database system storage for binary datatypes will slow the application down with large file size.</p>
+    </div>
+
+
+  </div>
+
+</div>
+

@@ -1,0 +1,56 @@
+<app-navpage></app-navpage>
+
+<div class="container" role="main">
+<br>
+  <div class="jumbotron">
+
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+      <p style="color: white">Please Wait. </p>
+    </ngx-spinner>
+
+    <form>
+      <fieldset>
+
+      <div class="form-group">
+        <form class="form" #PhotoForm=ngForm  (ngSubmit)="onSubmit()"  enctype="multipart/form-data">
+
+          <label for="exampleInputFile">File input</label>
+          <input type="file" #Image class="form-control-file" id="inputImage" name="streamfile"
+           multiple (change)="handleFileInput($event.target.files)" placeholder="image">
+          <br>
+          <button type="submit" class="btn btn-primary" >Submit</button>
+
+        </form>
+      </div>
+
+      </fieldset>
+    </form>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="getDbFiles()" >Download</button>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">File Name</th>
+        <th scope="col">Size</th>
+        <th scope="col">Open</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-active"  *ngFor="let requests of newRequests">
+        <th scope="row">{{requests.originalname}}</th>
+        <td>{{requests.size}}</td>
+        <td>
+          <button (click)="download(requests.blob_data.data)"  class="btn btn-primary" >open</button>
+        </td>
+        <td>
+          <button (click)="deletea(requests.id)"  class="btn btn-danger" >delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
